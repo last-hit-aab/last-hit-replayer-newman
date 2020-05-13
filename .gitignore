@@ -5,5 +5,5 @@ postman/integ.postman_environment.json
 .idea/modules.xml
 .idea/vcs.xml
 yarn-error.log
-dist
 .idea
+dist

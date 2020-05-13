@@ -4,8 +4,14 @@
 	"description": "newman ci warpper ",
 	"main": "index.js",
 	"repository": "https://github.com/last-hit-aab/last-hit-replayer-newman.git",
-	"author": "last-hit-a",
-	"license": "MIT",
+	"scripts": {
+		"start": "gulp && node bin/entry.js",
+		"test": "last-hit-replayer-newman",
+		"deploy": "gulp && npm publish --access public",
+		"deploy:dev": "gulp && npm publish --tag dev",
+		"compile": "gulp",
+		"update:dev": "yarn add last-hit-extensions@dev"
+	},
 	"dependencies": {
 		"@types/async": "^3.2.1",
 		"@types/jsonfile": "^5.0.0",
@@ -19,5 +25,7 @@
 		"newman": "^5.0.0",
 		"node": "^14.2.0",
 		"yargs": "^15.3.1"
-	}
+	},
+	"author": "last-hit-a",
+	"license": "MIT"
 }
