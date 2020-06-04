@@ -1,6 +1,6 @@
 {
 	"name": "last-hit-replayer-newman",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "newman ci warpper ",
 	"main": "index.js",
 	"repository": "https://github.com/last-hit-aab/last-hit-replayer-newman.git",
