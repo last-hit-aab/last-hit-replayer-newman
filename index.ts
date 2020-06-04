@@ -1,10 +1,12 @@
 import path from "path";
 import async from "async";
-import newman from "newman";
-import { startTime, getProcessId, loadConfig, findApiWorkspace } from "./lib/utils";
+import { loadExecuteEnvironment, findApiWorkspace } from "./lib/config";
+import { startTime, getProcessId } from "./lib/utils";
 import { doOnSingleProcess, doOnMultipleProcesses, isOnParallel } from "./lib/runner";
 
 const PARALLEL_RUN_COUNT = 2;
+
+import newman from "newman";
 
 //TODO
 
@@ -44,36 +46,72 @@ const PARALLEL_RUN_COUNT = 2;
 // 	});
 // });
 
+// const collection = require("../last-hit-paradise/api_test/smk-story/last-hit-admin.postman_collection.json");
+
 startTime("all-used");
-const run = () => {
+const run = async () => {
 	const processId = getProcessId();
 	console.info((`Process[${processId}] started.`.bold as any).green);
 
-	(async (): Promise<void> => {
-		try {
-			const env = await loadConfig();
-			const workspace = await findApiWorkspace(env);
-			if (isOnParallel(env)) {
-				await doOnMultipleProcesses(workspace, env);
-			} else {
-				await doOnSingleProcess(workspace, env);
-			}
-		} catch (e) {
-			console.error(e);
-			return Promise.reject(e);
+	// (async (): Promise<void> => {
+	try {
+		const env = await loadExecuteEnvironment();
+		const workspace = await findApiWorkspace();
+		if (isOnParallel(env)) {
+			await doOnMultipleProcesses(workspace, env);
+		} else {
+			doOnSingleProcess(workspace, env);
 		}
-	})()
-		.then(() => {
-			// console.log(`process[${processId}] exit on 0.`);
-			process.exit(0);
-		})
-		.catch((reason: string) => {
-			if (reason === "jammed") {
-				// console.log(`process[${processId}] exit on 1024.`);
-				process.exit(2);
-			} else {
-				// console.log(`process[${processId}] exit on 1.`);
-				process.exit(1);
-			}
-		});
+	} catch (e) {
+		console.error(e);
+		return Promise.reject(e);
+	}
+	// })()
+	// .then(() => {
+	// 	// console.log(`process[${processId}] exit on 0.`);
+	// 	process.exit(0);
+	// })
+	// .catch((reason: string) => {
+	// 	if (reason === "jammed") {
+	// 		// console.log(`process[${processId}] exit on 1024.`);
+	// 		process.exit(2);
+	// 	} else {
+	// 		// console.log(`process[${processId}] exit on 1.`);
+	// 		process.exit(1);
+	// 	}
+	// });
 };
+
+// export { FlowFile };
+export { doOnMultipleProcesses, doOnSingleProcess };
+// const run = () => {
+// 	newman
+// 		.run(
+// 			{
+// 				collection: require("/Users/yifeng/Documents/last-hit-e/github/aab/last-hit-paradise/api_test/smk-story/last-hit-admin.postman_collection.json"),
+// 				environment: require("/Users/yifeng/Documents/last-hit-e/github/aab/last-hit-paradise/api_test/last-hit-local.postman_environment.json"),
+// 				reporters: "cli",
+// 				// reporter: { json: { export: `./newman/${story.name}/${flow.collectionName}.json` } },
+// 			},
+// 			function (err) {
+// 				if (err) {
+// 					throw err;
+// 				}
+// 				console.log("collection run complete!");
+// 			}
+// 		)
+// 		.on("start", function (err, args) {
+// 			// on start of run, log to console
+// 			console.log("running a collection...");
+// 		})
+// 		.on("done", function (err, summary) {
+// 			console.log("done");
+// 			if (err || summary.error) {
+// 				console.error("collection run encountered an error.");
+// 			} else {
+// 				console.log("collection run completed.");
+// 			}
+// 		});
+// };
+
+export default run;

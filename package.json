@@ -14,6 +14,8 @@
 	},
 	"dependencies": {
 		"@types/async": "^3.2.1",
+		"@types/axios": "^0.14.0",
+		"@types/bluebird-global": "^3.5.12",
 		"@types/jsonfile": "^5.0.0",
 		"@types/mkdirp": "^1.0.0",
 		"@types/newman": "^4.5.0",
@@ -24,7 +26,13 @@
 		"mkdirp": "^1.0.4",
 		"newman": "^5.0.0",
 		"node": "^14.2.0",
+		"typescript": "^3.9.3",
 		"yargs": "^15.3.1"
+	},
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-sourcemaps": "^2.6.5",
+		"gulp-typescript": "^6.0.0-alpha.1"
 	},
 	"author": "last-hit-a",
 	"license": "MIT"
