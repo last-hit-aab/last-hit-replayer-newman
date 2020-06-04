@@ -4,6 +4,17 @@
 	"description": "newman ci warpper ",
 	"main": "index.js",
 	"repository": "https://github.com/last-hit-aab/last-hit-replayer-newman.git",
+	"bin": {
+		"last-hit-replayer-newman": "./bin/entry.js"
+	},
+	"keywords": [
+		"test",
+		"web",
+		"automation"
+	],
+	"bugs": {
+		"url": "https://github.com/last-hit-aab/last-hit-replayer-newman/issues"
+	},
 	"scripts": {
 		"start": "gulp && node bin/entry.js",
 		"test": "last-hit-replayer-newman",
@@ -34,6 +45,6 @@
 		"gulp-sourcemaps": "^2.6.5",
 		"gulp-typescript": "^6.0.0-alpha.1"
 	},
-	"author": "last-hit-a",
+	"author": "last-hit-team",
 	"license": "MIT"
 }
