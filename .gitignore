@@ -6,5 +6,5 @@ postman/integ.postman_environment.json
 .idea/vcs.xml
 yarn-error.log
 .idea
-dist
+# dist
 newman

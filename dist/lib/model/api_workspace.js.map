@@ -1,0 +1,1 @@
+{"version":3,"sources":["../lib/model/api_workspace.ts"],"names":[],"mappings":"","file":"api_workspace.js","sourcesContent":["import { ApiStory } from \"./api_story\";\nimport { ApiEnvironment } from \"./api_env\";\n\nexport interface ApiWorkspace {\n\tstories: ApiStory[];\n\tenv: ApiEnvironment;\n}\n"]}

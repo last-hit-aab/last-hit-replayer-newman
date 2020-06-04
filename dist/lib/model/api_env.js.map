@@ -1,0 +1,1 @@
+{"version":3,"sources":["../lib/model/api_env.ts"],"names":[],"mappings":"","file":"api_env.js","sourcesContent":["export interface ApiEnvironment {\n\tpath: string;\n\tenvironmentName: string;\n}\n"]}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../lib/model/api_flow.ts"],"names":[],"mappings":"","file":"api_flow.js","sourcesContent":["export interface ApiFlow {\n\tcollectionName: string;\n\tpath: string;\n}\n"]}

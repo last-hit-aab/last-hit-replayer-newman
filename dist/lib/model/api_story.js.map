@@ -1,0 +1,1 @@
+{"version":3,"sources":["../lib/model/api_story.ts"],"names":[],"mappings":"","file":"api_story.js","sourcesContent":["import { ApiFlow } from \"./api_flow\";\n\nexport interface ApiStory {\n\tname: string;\n\tflows: ApiFlow[];\n}\n"]}
