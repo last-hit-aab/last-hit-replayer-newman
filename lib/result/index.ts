@@ -13,10 +13,20 @@ export const collectResults = async () => {
 	const resultFiles = fs.readdirSync(dir).filter((name) => name.startsWith(processId));
 
 	const results = resultFiles.map((result) => {
-		return jsonfile.readFileSync(path.join(dir + "/" + result));
+		return {
+			fileName: result,
+			storyName: getRunInfo(result).storyName,
+			flowName: getRunInfo(result).flowName,
+			json: jsonfile.readFileSync(path.join(dir + "/" + result)),
+		};
 	});
 
 	sentToServer(results);
 
 	// console.log(resultFiles);
+};
+
+const getRunInfo = (fileName: string): { storyName: string; flowName: string } => {
+	const data = fileName.split("_");
+	return { storyName: data[1], flowName: data[2] };
 };

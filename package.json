@@ -27,7 +27,6 @@
 	"dependencies": {
 		"@types/async": "^3.2.1",
 		"@types/axios": "^0.14.0",
-		"@types/bluebird-global": "^3.5.12",
 		"@types/jsonfile": "^5.0.0",
 		"@types/mkdirp": "^1.0.0",
 		"@types/newman": "^4.5.0",

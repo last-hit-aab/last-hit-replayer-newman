@@ -57,12 +57,21 @@ exports.collectResults = function () { return __awaiter(void 0, void 0, void 0, 
                 dir = path_1.default.join("newman");
                 resultFiles = fs_1.default.readdirSync(dir).filter(function (name) { return name.startsWith(processId); });
                 results = resultFiles.map(function (result) {
-                    return jsonfile_1.default.readFileSync(path_1.default.join(dir + "/" + result));
+                    return {
+                        fileName: result,
+                        storyName: getRunInfo(result).storyName,
+                        flowName: getRunInfo(result).flowName,
+                        json: jsonfile_1.default.readFileSync(path_1.default.join(dir + "/" + result)),
+                    };
                 });
                 sent_1.sentToServer(results);
                 return [2 /*return*/];
         }
     });
 }); };
+var getRunInfo = function (fileName) {
+    var data = fileName.split("_");
+    return { storyName: data[1], flowName: data[2] };
+};
 
 //# sourceMappingURL=index.js.map

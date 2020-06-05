@@ -3,7 +3,7 @@ import { endTime } from "../utils";
 import axios from "axios";
 import { argv as args } from "yargs";
 
-const buildBody = (results: string[]) => {
+const buildBody = (results: { fileName: string; storyName: string; flowName: string; json: string }[]) => {
 	const workspaceId = args.workspaceId as number;
 	const testPlanId = args.testPlanId as number;
 	if (workspaceId) {
@@ -32,11 +32,12 @@ const buildBody = (results: string[]) => {
 	}
 };
 
-export const sentToServer = async (results: string[]) => {
+export const sentToServer = async (
+	results: { fileName: string; storyName: string; flowName: string; json: string }[]
+) => {
 	const adminUrl = await assertAdminURL();
 	if (adminUrl) {
 		const used = endTime("all-used");
-		// console.log("request body", JSON.stringify(buildBody(results)));
 		try {
 			const response = await axios.post(`${adminUrl}/openapi/api/test_run`, buildBody(results));
 

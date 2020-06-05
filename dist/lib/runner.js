@@ -71,7 +71,7 @@ var runNewman = function (story, flow, execute_env, next) {
         collection: collection,
         environment: env,
         reporters: ["json", "cli"],
-        reporter: { json: { export: "./newman/" + processId + "-" + story.name + "-" + flow.collectionName + "-result.json" } },
+        reporter: { json: { export: "./newman/" + processId + "_" + story.name + "_" + flow.collectionName + "_result.json" } },
     })
         .on("start", function (err, args) {
         // on start of run, log to console
