@@ -38,8 +38,11 @@ const runNewman = (story: ApiStory, flow: ApiFlow, execute_env: ExecuteEnvironme
 		.run({
 			collection: collection,
 			environment: env,
-			reporters: ["json", "cli"],
-			reporter: { json: { export: `./newman/${processId}_${story.name}_${flow.collectionName}_result.json` } },
+			reporters: ["json", "cli", "html"],
+			reporter: {
+				json: { export: `./newman/${processId}_${story.name}_${flow.collectionName}_result.json` },
+				html: { export: `./newman/html/${processId}/${story.name}_${flow.collectionName}.html` },
+			},
 		})
 		.on("start", function (err, args) {
 			// on start of run, log to console
