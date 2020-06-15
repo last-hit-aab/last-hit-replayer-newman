@@ -1,6 +1,6 @@
 {
 	"name": "last-hit-replayer-newman",
-	"version": "1.0.6",
+	"version": "1.0.7",
 	"description": "newman ci warpper ",
 	"main": "dist/index.js",
 	"types": "index",
